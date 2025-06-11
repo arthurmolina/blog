@@ -1,5 +1,6 @@
 ---
 title: "The Social Function of Domain Names for Dummies or \"Someone registered the domain name that I wanted and don't use it... Now what?\""
+lang: en
 last_modified_at: 2014-08-17T20:00:00-03:00
 categories:
   - Blog

@@ -1,5 +1,6 @@
 ---
 title: "Why ruby? Por que Ruby?"
+lang: en
 last_modified_at: 2013-11-03T16:00:00-03:00
 categories:
   - Blog

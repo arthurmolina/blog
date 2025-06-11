@@ -1,6 +1,6 @@
 ---
-title: "About Gravatar"
-lang: en
+title: "Sobre o Gravatar"
+lang: pt
 last_modified_at: 2023-04-16T20:00:00-03:00
 categories:
   - Blog
@@ -13,23 +13,23 @@ header:
   show_overlay_excerpt: false
 ---
 
-Gravatar, short for "Globally Recognized Avatar," is a service that allows users to create a profile picture that follows them across the web. Launched in 2007 by Tom Preston-Werner, Gravatar quickly became a popular choice for online identity management.
+Gravatar, abreviação de "Globally Recognized Avatar" (Avatar Globalmente Reconhecido), é um serviço que permite aos usuários criar uma foto de perfil que os acompanha pela web. Lançado em 2007 por Tom Preston-Werner, o Gravatar rapidamente se tornou uma escolha popular para o gerenciamento de identidade online.
 
-At its core, Gravatar assigns a unique avatar to each user's email address. When users comment on blogs, participate in forums, or interact on various websites, their Gravatar image automatically appears alongside their contributions. This consistent visual representation fosters a sense of identity and community across different online platforms.
+Em sua essência, o Gravatar atribui um avatar único ao endereço de e-mail de cada usuário. Quando os usuários comentam em blogs, participam de fóruns ou interagem em vários sites, a imagem do Gravatar aparece automaticamente ao lado de suas contribuições. Essa representação visual consistente fomenta um senso de identidade e comunidade em diferentes plataformas online.
 
-One of the key advantages of Gravatar is its convenience. Users can create or update their avatar once, and it will automatically propagate across all Gravatar-enabled sites, eliminating the need to upload a profile picture individually on each platform. This streamlined process saves time and ensures consistency in online branding.
+Uma das principais vantagens do Gravatar é sua praticidade. Os usuários podem criar ou atualizar seu avatar uma vez, e ele se propagará automaticamente por todos os sites que suportam o Gravatar, eliminando a necessidade de fazer upload de uma foto de perfil individualmente em cada plataforma. Esse processo simplificado economiza tempo e garante consistência na identidade online.
 
-Additionally, Gravatar offers users control over their privacy settings, allowing them to choose between public, private, or rated content for their avatars.
+Além disso, o Gravatar oferece aos usuários controle sobre suas configurações de privacidade, permitindo que escolham entre conteúdo público, privado ou classificado para seus avatares.
 
-In summary, Gravatar simplifies online identity management, fosters community engagement, and provides users with a convenient and customizable way to represent themselves across the web.
+Em resumo, o Gravatar simplifica o gerenciamento de identidade online, fomenta o engajamento da comunidade e oferece aos usuários uma maneira conveniente e personalizável de se representarem na web.
 
-Furthermore, there is no need to create a feature in your application to save your user's photo, we don't need to have storage space for these photos, the user doesn't need to go through the trouble of sending their photo to each application they want to use, and if he doesn't want to be identified, we can still leave a drawing of a funny robot or alien that changes and maintains the same pattern by email.
+Além disso, não há necessidade de criar um recurso na sua aplicação para salvar a foto do usuário, não precisamos ter espaço de armazenamento para essas fotos, o usuário não precisa passar pelo trabalho de enviar sua foto para cada aplicação que quiser usar, e se ele não quiser ser identificado, ainda podemos deixar um desenho de um robô ou alienígena engraçado que muda e mantém o mesmo padrão por e-mail.
 
-# How to do it
+# Como fazer
 
-There are [several Gems](https://rubygems.org/search?query=gravatar) that can do the task. But this is a very easy functionality to have and a simple file added to the /app/models/concerns folder solves the problem. There is no need to [have a gem and have to deal with the hassles of maintaining it](/blog/minimizing-gems-libraries-in-ruby-on-rails/). Especially because many of the gravatar gems I've seen are already very out of date.
+Existem [várias Gems](https://rubygems.org/search?query=gravatar) que podem fazer a tarefa. Mas essa é uma funcionalidade muito fácil de ter e um simples arquivo adicionado à pasta /app/models/concerns resolve o problema. Não há necessidade de [ter uma gem e ter que lidar com os problemas de mantê-la](/blog/minimizing-gems-libraries-in-ruby-on-rails/). Especialmente porque muitas das gems de gravatar que vi já estão muito desatualizadas.
 
-So just add the file below:
+Então basta adicionar o arquivo abaixo:
 
 ```ruby
 # frozen_string_literal: true
@@ -120,7 +120,7 @@ module Gravatable
 end
 ```
 
-In any model that has the email field, just add the Gravatable as below:
+Em qualquer model que tenha o campo de e-mail, basta adicionar o Gravatable como abaixo:
 
 ```ruby
 class User
@@ -132,4 +132,4 @@ end
 User.last.gravatar_url({ size: 40 })
 ```
 
-As you can see in the code, it is not mine originally. I created a version from the [Gravtastic gem](https://github.com/chrislloyd/gravtastic/commits/master/) that has not been updated since 2016.
+Como você pode ver no código, ele não é originalmente meu. Criei uma versão a partir da [gem Gravtastic](https://github.com/chrislloyd/gravtastic/commits/master/) que não é atualizada desde 2016.

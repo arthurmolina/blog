@@ -1,6 +1,6 @@
 ---
-title: "When we need to search or replace a string inside the DB"
-lang: en
+title: "Quando precisamos buscar ou substituir uma string dentro do banco de dados"
+lang: pt
 last_modified_at: 2014-08-17T20:00:00-03:00
 categories:
   - Blog
@@ -13,11 +13,11 @@ header:
   show_overlay_excerpt: false
 ---
 
-What about when I need to find a specific string within a database but I don't know in which table or column?
+E quando preciso encontrar uma string específica dentro de um banco de dados, mas não sei em qual tabela ou coluna?
 
-Today I had a need that I keep having and I always used another way to solve it. I had never used this bank before, but they came to me asking to change the contract number to, say, '666/2014' where before it was '333/2012'. How to make? Normally I dump the database and search the text in text mode (using an editor or the grep command). But talking to my friend DBA (thanks Adolfho Lopes!) we decided to do it another way.
+Hoje tive uma necessidade que vivo tendo e sempre usei outro modo de resolver. Nunca tinha mexido nesse banco antes, mas chegaram pra mim pedindo pra alterar o número do contrato para digamos ‘666/2014′ onde antes era ‘333/2012′. Como fazer? Normalmente eu faço um dump do banco e faço uma busca do texto em modo texto mesmo (usando um editor ou o comando grep). Mas conversando com meu amigo DBA ( valeu Adolfho Lopes! ) decidimos fazer de outro modo.
 
-Below is the result, but be careful: Use in moderation! These functions are to be used in times of need and in a hurry. Never in production. Don't do that, otherwise the bank would collapse! :)
+Abaixo está o resultado, mas atenção: Use com moderação! Estas funções são para serem usadas em momento de necessidade e pressa. Nunca em produção. Não faz isso, senão cabôsse o banco! :)
 
 ```sql
 CREATE TYPE table_master_search_table AS (

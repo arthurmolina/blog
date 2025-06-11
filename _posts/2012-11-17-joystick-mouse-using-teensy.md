@@ -1,5 +1,6 @@
 ---
 title: "Joystick mouse using Teensy"
+lang: en
 last_modified_at: 2012-11-17T16:00:00-03:00
 categories:
   - Blog
@@ -79,7 +80,8 @@ void loop() {
 # Some explanations
 
 The Joystick is nothing more than two potentiometers and a button (in case you press the joystick down). The VRx and VRy terminals are connected to the Teensy's analog ports while the SW terminal, which is the button, is connected to a digital port (although it is not being used). The analog ports range from Zero to 1023. However, after some tests I discovered that on one axis the values range from zero to 1023, stopping at 506 when it is centered, and the other axis goes from zero to 997, stopping at 512. Certainly other pieces will have different limits. The change function adapts the value returned by the potentiometers to the most interesting number for the mouse function, which should range from -127 to 127.
-Problems
+
+# Problems
 
 I tried to make the button that comes with it work as a mouse click, however I don't know why sometimes the value is zero and other times it is 1 without even moving the joystick. Another issue is that it doesn't always move in the right direction. I didn't understand the reason. If anyone knows, please explain to me.
 

@@ -1,6 +1,6 @@
 ---
-title: "Placing the 2010 Brazilian Census in PostgreSQL"
-lang: en
+title: "Importando o Censo Demográfico 2010 do IBGE no PostgreSQL"
+lang: pt
 last_modified_at: 2012-12-04T16:00:00-03:00
 categories:
   - Blog
@@ -17,19 +17,19 @@ header:
   show_overlay_excerpt: false
 ---
 
-There are several reasons for wanting to save IBGE 2010 Universe Census data in the Postgres database. One that is more obvious is being able to generate optimized queries of the data you want to work with. Furthermore, SPSS and ArcGIS have the option to open a Postgres query and many other systems also have it. This whole procedure should be very simple, but the number of errors in the files downloaded from IBGE is so great that this process took me an absurd amount of time for no reason.
+xistem várias razões para querer guardar os dados do Censo Universo de 2010 do IBGE no banco de dados Postgres. Uma que é mais óbvia é poder gerar querys optimizadas dos dados que quiser trabalhar. Além disso o SPSS e o ArcGIS tem opção de abrir uma query do Postgres e muitos outros sistemas também tem. Este procedimento todo deveria ser muito simples, mas a quantidade de erros nos arquivos baixados do IBGE é tão grande que esse processo me tomou um tempo absurdo e sem motivo.
 
-So let's go. The first thing to do is download all the data from the IBGE FTP at ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Resultados_do_Universo/Agregados_por_Setores_Censitarios/. Prepare time and bandwidth as there are several files and quite large (28 files totaling more than 2.2Gb).
+Então vamos lá. Primeira coisa a fazer é baixar todos os dados do FTP do IBGE em ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Resultados_do_Universo/Agregados_por_Setores_Censitarios/. Prepare tempo e banda pois são vários arquivos e bem grandes (28 arquivos totalizando mais de 2,2Gb).
 
-But the problem is not with the download. First, IBGE makes the files available in two formats: XLS and CSV. The problem is that their conversion from XLS to CSV did not come out correctly. Some CSV came with the sector code column in scientific notation format, and they must have gotten confused in the Espirito Santo file as they did not include one of the CSV and replaced it with an XLS... In other words, we cannot count on the saved CSV files by IBGE. Another error that I found later when entering the data into the tables was that the files are not standardized!!! For example, the surrounding files for the states of Ceará, Distrito Federal, Minas Gerais, Pernambuco and Rio Grande do Sul have fewer columns than the others. We will return to this below.
+Mas o problema não está no download. Primeiro, o IBGE disponibiliza os arquivos em dois formatos: XLS e CSV. O problema é que a conversão do XLS para CSV deles não saiu correta. Alguns CSV vieram com a coluna do código do setor em formato de notação científica, além disso devem ter se confundindo no arquivo do Espirito Santo que não colocaram um dos CSV e substituiram por um XLS… Ou seja, não podemos contar com os arquivos CSV salvos pelo IBGE. Outro erro que encontrei depois na hora de jogar os dados dentro das tabelas foi que os arquivos não estão padronizados!!! Por exemplo, os arquivos de Entorno para os estados do Ceará, Distrito Federal, Minas Gerais, Pernambuco e Rio Grande do Sul estão com menos colunas que os outros. Voltaremos a isso mais abaixo.
 
-Another issue to think about is the dictionary of variables. Each state has 26 tables. And the dictionary for each table is in a PDF file inside each ZIP called INFORMATION BASE BY CENSUS SECTOR 2010 Census – Universo.pdf. An uninteresting format as it is very difficult to obtain the data in an automated way. The solution I found was to convert the PDF to DOC using this website. And then I had the legwork of converting each one into an [XLS table](/assets/downloads/DadosCenso2010.xls). I made the file available for anyone who doesn't want to do the work I did.
+Outra questão a se pensar é no dicionário das variáveis. Cada estado tem 26 tabelas. E o dicionário de cada tabela está num arquivo PDF dentro de cada ZIP chamado BASE DE INFORMAÇÕES POR SETOR CENSITÁRIO Censo 2010 – Universo.pdf. Um formato nada interessante pois fica muito dificil de tirar os dados de modo automatizado. A solução que encontrei foi converter o PDF em DOC usando este site. E depois tive um trabalho braçal de converter cada um em uma [tabela XLS](/assets/downloads/DadosCenso2010.xls). Coloquei o arquivo disponível para quem não quiser ter o trabalho que tive.
 
-Returning to the data again. Those who use Linux have an advantage as it has several commands that make it possible to perform a batch conversion. Below is a shell script to run and transform the ZIPs you downloaded from the website into a single file for each of the 26 tables. Before running this script it is important that some programs are installed. To do this, just run:
+Voltando novamente aos dados. Quem usa Linux sai em vantagem pois ele possui vários comandos que possibilitam executar uma conversão em lote. Abaixo um script shell para rodar e transformar os ZIPs que você baixou do site em um arquivo único para cada uma das 26 tabelas. Antes de rodar esse script é importante que alguns programas estejam instalados. Para isso basta rodar:
 
 sudo apt-get install unoconv libreoffice unzip
 
-And the script:
+E o script:
 
 ```bash
 #!/bin/sh
@@ -83,11 +83,12 @@ cat ./xls/responsavel02*.csv.csv > Responsavel02.csv
 cat ./xls/responsavelrenda*.csv.csv > ResponsavelRenda.csv
 ```
 
-Just put all the ZIP files in a folder together with this script and run. Line 02 creates a folder. Then, in lines 03 to 06, all XLS in that folder are unzipped. Line 08 converts all XLS files to CSV using delimiter ; (whose code is 59) and text delimiter ” (whose code is 34) and still using UTF-8 encoding.
+Basta colocar todos os arquivos ZIP numa pasta juntamente com esse script e executar. A linha 02 cria uma pasta. Depois, nas linhas 03 a 06 são descompactados todos os XLS nessa pasta. A linha 08 faz a conversão de todos os arquivos XLS para CSV usando delimitador ; (cujo código é 59) e delimitador de texto ” (cujo código é 34) e ainda usando o encoding UTF-8.
 
-Finally, the subsequent lines use the sed command twice, the first to remove the first line from all files and then to replace the comma with a period in the data and join everything in a single file.
+Finalmente as linhas subsequentes usam o comando sed duas vezes, a primeira para tirar a primeira linha de todos os arquivos e depois para substituir a virgula por ponto nos dados e junta tudo num arquivo só.
 
-Ready. The files are ready to play in the bank. Then I created a small PHP script that converts the XLS with the XLS table that I mentioned earlier that will generate SQL to execute in PostgreSQL:
+Pronto. Os arquivos estão prontos para jogar no banco. Depois criei um pequeno script em PHP que converte o XLS com a tabela XLS que falei anteriormente que vai gerar um SQL pra executar no PostgreSQL:
+
 
 ```php
 passthru("unoconv -i 59,34,UTF-8 -f csv DadosCenso2010.xls");
@@ -159,4 +160,4 @@ fwrite($f, $sql_dic . "\n\n" . $sql_banco . "\n\n" . $sql_populate);
 ?>
 ```
 
-Be assured that the procedure is not that simple. But it's at least a little help.
+Garanto que o procedimento não é tão simples quanto parece. Mas é pelo menos uma pequena ajuda.

@@ -55,12 +55,23 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-remote-theme
+  - jekyll-polyglot
+
+# Polyglot (i18n)
+languages: ["en", "pt"]
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "assets"]
+parallel_localization: false
+lang_from_path: true
 
 author:
   name   : "Arthur Molina"
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "passionate about looking for solutions to problems"
+  bio_pt : "apaixonado por encontrar soluções para os problemas"
   location: "Brazil"
+  location_pt: "Brasil"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

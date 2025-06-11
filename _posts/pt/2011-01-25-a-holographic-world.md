@@ -1,6 +1,6 @@
 ---
-title: "A holographic world"
-lang: en
+title: "Um mundo holográfico"
+lang: pt
 last_modified_at: 2011-01-25T16:00:00-03:00
 categories:
   - Blog
@@ -14,8 +14,8 @@ header:
   show_overlay_excerpt: false
 ---
 
-A dream…​ Imagine drawing using a tool like this…​
+Um sonho… Imagina desenhar desse jeito…
 
 {% include video id="1416530" provider="vimeo" %}
 
-[Holographic Interface - round interface - Ringo](http://vimeo.com/1416530) from [Ivan Tihienko](http://vimeo.com/user488156) on Vimeo.
+[Holographic Interface - round interface - Ringo](http://vimeo.com/1416530) de [Ivan Tihienko](http://vimeo.com/user488156) no Vimeo.

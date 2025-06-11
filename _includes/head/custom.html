@@ -1,0 +1,40 @@
+<style>
+  .lang-switcher {
+    position: fixed;
+    top: 70px;
+    right: 16px;
+    z-index: 9999;
+    background: #494e52;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+  }
+  .lang-switcher a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .lang-switcher a:hover {
+    text-decoration: underline;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var lang = '{{ site.active_lang }}';
+    var url = '{{ page.url }}';
+    var label, href;
+
+    if (lang === 'pt') {
+      label = 'EN';
+      href = url || '/';
+    } else {
+      label = 'PT';
+      href = '/pt' + url;
+    }
+
+    var div = document.createElement('div');
+    div.className = 'lang-switcher';
+    div.innerHTML = '<a href="' + href + '">' + label + '</a>';
+    document.body.appendChild(div);
+  });
+</script>
