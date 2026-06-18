@@ -22,14 +22,15 @@
   document.addEventListener('DOMContentLoaded', function () {
     var lang = '{{ site.active_lang }}';
     var url = '{{ page.url }}';
+    var base = '{{ "/" | relative_url }}'.replace(/\/$/, '');
     var label, href;
 
     if (lang === 'pt') {
       label = 'EN';
-      href = url || '/blog/';
+      href = base + url.replace(/^\/pt/, '');
     } else {
       label = 'PT';
-      href = '/blog/pt' + url;
+      href = base + '/pt' + url;
     }
 
     var div = document.createElement('div');

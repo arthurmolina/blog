@@ -3,7 +3,7 @@ title: "Placing the 2010 Brazilian Census in PostgreSQL"
 lang: en
 last_modified_at: 2012-12-04T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - code
   - architecture

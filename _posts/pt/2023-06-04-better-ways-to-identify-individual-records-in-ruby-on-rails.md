@@ -3,7 +3,7 @@ title: "Melhores formas de identificar registros individuais no Ruby on Rails"
 lang: pt
 last_modified_at: 2023-06-04T20:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - nonsense
 header:

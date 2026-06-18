@@ -3,7 +3,7 @@ title: "OpenLayers and Google Maps vs. Internet Explorer"
 lang: en
 last_modified_at: 2012-03-19T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - code
   - openlayers

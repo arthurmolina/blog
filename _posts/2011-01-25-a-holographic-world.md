@@ -3,7 +3,7 @@ title: "A holographic world"
 lang: en
 last_modified_at: 2011-01-25T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - architecture
 show_overlay_excerpt: false

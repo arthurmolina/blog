@@ -3,7 +3,7 @@ title: "Quando precisamos buscar ou substituir uma string dentro do banco de dad
 lang: pt
 last_modified_at: 2014-08-17T20:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - nonsense
 header:

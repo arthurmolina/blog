@@ -3,7 +3,7 @@ title: "When we need to search or replace a string inside the DB"
 lang: en
 last_modified_at: 2014-08-17T20:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - nonsense
 header:

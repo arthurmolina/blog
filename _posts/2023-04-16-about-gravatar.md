@@ -3,7 +3,7 @@ title: "About Gravatar"
 lang: en
 last_modified_at: 2023-04-16T20:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - nonsense
 header:

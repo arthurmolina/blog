@@ -3,7 +3,7 @@ title: "Minimizando Gems/Bibliotecas no Ruby on Rails: Mantendo o Código Dentro
 lang: pt
 last_modified_at: 2024-01-11T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - code
   - electronics

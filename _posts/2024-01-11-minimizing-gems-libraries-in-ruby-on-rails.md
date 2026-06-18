@@ -3,7 +3,7 @@ title: "Minimizing Gems/Libraries in Ruby on Rails: Keeping Code Within the Repo
 lang: en
 last_modified_at: 2024-01-11T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - code
   - electronics

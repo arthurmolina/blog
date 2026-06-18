@@ -3,7 +3,7 @@ title: "Mouse com joystick usando Teensy"
 lang: pt
 last_modified_at: 2012-11-17T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - code
   - electronics

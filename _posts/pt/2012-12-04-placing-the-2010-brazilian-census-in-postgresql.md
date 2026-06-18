@@ -3,7 +3,7 @@ title: "Importando o Censo Demográfico 2010 do IBGE no PostgreSQL"
 lang: pt
 last_modified_at: 2012-12-04T16:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - code
   - architecture

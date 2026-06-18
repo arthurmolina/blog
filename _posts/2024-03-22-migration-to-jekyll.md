@@ -3,7 +3,7 @@ title: "Migration to Jekyll"
 lang: en
 last_modified_at: 2024-03-22T20:00:00-03:00
 categories:
-  - Blog
+  - articles
 tags:
   - nonsense
 header:
