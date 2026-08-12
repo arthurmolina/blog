@@ -1,5 +1,5 @@
 ---
-title: "MCP: uma API anabolizada (e por que construímos uma só para a nossa operação)"
+title: "MCP: uma API em steroids (e por que construímos uma só para a nossa operação)"
 lang: pt
 last_modified_at: 2026-08-12T20:00:00-03:00
 categories:
